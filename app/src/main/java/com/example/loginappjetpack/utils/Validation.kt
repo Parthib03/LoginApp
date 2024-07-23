@@ -1,24 +1,26 @@
 package com.example.loginappjetpack.utils
 
+import android.content.Context
 import android.widget.Toast
 
 fun validateInputs(
-    email: String,
-    password: String,
-    context: android.content.Context // Pass the context to show Toast
+    email: String, password: String, context: Context
 ) {
+    val emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$".toRegex()
+    val passwordPattern = "^[A-Za-z0-9]{10,}$".toRegex()
+
     when {
-        !email.contains("@") || !email.contains(".com") || email.any { it.isWhitespace() || !it.isLetterOrDigit() } -> {
-            // Show toast for incorrect email
+        !emailPattern.matches(email) -> {
             Toast.makeText(context, "Incorrect email address", Toast.LENGTH_SHORT).show()
         }
-        password.length < 10 -> {
-            // Show toast for password less than 10 characters
+
+        !passwordPattern.matches(password) -> {
             Toast.makeText(context, "Password less than 10 digits", Toast.LENGTH_SHORT).show()
         }
+
         else -> {
-            // Show toast for successful sign-in
             Toast.makeText(context, "Sign in Successful", Toast.LENGTH_SHORT).show()
         }
     }
 }
+
