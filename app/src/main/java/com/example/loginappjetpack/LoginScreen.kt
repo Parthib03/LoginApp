@@ -2,8 +2,12 @@ package com.example.loginappjetpack
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,14 +18,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.ui.platform.LocalContext
+import com.example.loginappjetpack.utils.validateInputs
+import com.example.loginappjetpack.components.MainButton
 
 @Composable
 fun LoginScreen() {
     // State to hold the text field values
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
+
+    // Get the context for showing toast messages
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -33,10 +41,15 @@ fun LoginScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.Center, // Centers content vertically
-            horizontalAlignment = Alignment.CenterHorizontally // Centers content horizontally
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Centered "Sign In" Text
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Login Image",
+                modifier = Modifier.size(300.dp)
+            )
+
             Text(
                 text = "Sign In",
                 color = Color.Yellow,
@@ -44,7 +57,6 @@ fun LoginScreen() {
                 modifier = Modifier.padding(bottom = 20.dp)
             )
 
-            // "Email" Text
             Text(
                 text = "Email",
                 color = Color.White,
@@ -55,7 +67,6 @@ fun LoginScreen() {
                     .align(Alignment.Start) // Aligns the text to the start (left)
             )
 
-            // Email TextField with white background and hint
             TextField(
                 value = emailState.value,
                 onValueChange = { newText -> emailState.value = newText },
@@ -65,7 +76,6 @@ fun LoginScreen() {
                     .background(Color.White)
             )
 
-            // "Password" Text
             Text(
                 text = "Password",
                 color = Color.White,
@@ -76,7 +86,6 @@ fun LoginScreen() {
                     .align(Alignment.Start) // Aligns the text to the start (left)
             )
 
-
             TextField(
                 value = passwordState.value,
                 onValueChange = { newText -> passwordState.value = newText },
@@ -85,21 +94,23 @@ fun LoginScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White)
-
             )
 
-            Button(
-                onClick = { },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Yellow,
-                    contentColor = Color.Black
-                ),
+            MainButton(
+                text = "Login",
+                backgroundColor = Color.Yellow,
+                contentColor = Color.Black,
+                onClick = {
+                    validateInputs(
+                        email = emailState.value,
+                        password = passwordState.value,
+                        context = context
+                    )
+                },
                 modifier = Modifier
                     .padding(top = 40.dp)
                     .fillMaxWidth()
-            ) {
-                Text(text = "Login")
-            }
+            )
         }
     }
 }
