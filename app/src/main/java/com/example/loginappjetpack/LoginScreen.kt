@@ -2,8 +2,6 @@ package com.example.loginappjetpack
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.foundation.Image
@@ -19,16 +17,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.loginappjetpack.utils.validateInputs
 import com.example.loginappjetpack.components.MainButton
 
 @Composable
-fun LoginScreen() {
-    // State to hold the text field values
+fun LoginScreen(navController: NavController) {
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
-
-    // Get the context for showing toast messages
     val context = LocalContext.current
 
     Box(
@@ -64,7 +61,7 @@ fun LoginScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
-                    .align(Alignment.Start) // Aligns the text to the start (left)
+                    .align(Alignment.Start)
             )
 
             TextField(
@@ -73,7 +70,7 @@ fun LoginScreen() {
                 placeholder = { Text("Enter your email") },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White)
+                    .background(Color.Transparent)
             )
 
             Text(
@@ -83,7 +80,7 @@ fun LoginScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp, bottom = 8.dp)
-                    .align(Alignment.Start) // Aligns the text to the start (left)
+                    .align(Alignment.Start)
             )
 
             TextField(
@@ -93,7 +90,7 @@ fun LoginScreen() {
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White)
+                    .background(Color.Transparent)
             )
 
             MainButton(
@@ -101,11 +98,14 @@ fun LoginScreen() {
                 backgroundColor = Color.Yellow,
                 contentColor = Color.Black,
                 onClick = {
-                    validateInputs(
+                    val isValid = validateInputs(
                         email = emailState.value,
                         password = passwordState.value,
                         context = context
                     )
+                    if (isValid) {
+                        navController.navigate("signedin")
+                    }
                 },
                 modifier = Modifier
                     .padding(top = 40.dp)
@@ -115,8 +115,8 @@ fun LoginScreen() {
     }
 }
 
-@Preview(showBackground = true, device = "id:pixel_5")
+@Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen(rememberNavController())
 }
