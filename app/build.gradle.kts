@@ -65,5 +65,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.com.android.volley.volley2)
+    implementation(libs.coil.kt.coil.compose)
+    //implementation("androidx.compose.material:material-*:1.6.8")
 }
