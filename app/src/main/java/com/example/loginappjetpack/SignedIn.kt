@@ -16,9 +16,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.android.volley.toolbox.Volley
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.loginappjetpack.components.MainButton
 
 @Composable
-fun SignedInScreen(viewModel: SignedInViewModel = viewModel(factory = SignedInViewModelFactory(SignedInRepository(Volley.newRequestQueue(LocalContext.current))))) {
+fun SignedInScreen(navController: NavController, viewModel: SignedInViewModel = viewModel(factory = SignedInViewModelFactory(SignedInRepository(Volley.newRequestQueue(LocalContext.current))))) {
     val apiData by viewModel.apiData.observeAsState()
     val errorMessage by viewModel.errorMessage.observeAsState()
 
@@ -33,15 +36,28 @@ fun SignedInScreen(viewModel: SignedInViewModel = viewModel(factory = SignedInVi
                 Text(text = errorMessage!!, color = Color.White)  // Display error message
             }
             apiData != null -> {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(16.dp)
+                ) {
                     Image(
                         painter = rememberImagePainter(apiData!!.data.logoImage),
                         contentDescription = null,
                         modifier = Modifier.size(188.dp),
                         contentScale = ContentScale.Crop
                     )
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(text = apiData!!.data.title, color = Color.White)
+                    Spacer(modifier = Modifier.height(8.dp))
                     Text(text = apiData!!.data.headline, color = Color.White)
+                    Spacer(modifier = Modifier.height(32.dp))
+                    MainButton(
+                        text = "Go to homescreen",
+                        backgroundColor = Color.Blue,
+                        contentColor = Color.White,
+                        onClick = { navController.navigate("home") }
+                    )
                 }
             }
             else -> {
@@ -54,5 +70,6 @@ fun SignedInScreen(viewModel: SignedInViewModel = viewModel(factory = SignedInVi
 @Preview(showBackground = true)
 @Composable
 fun SignedInScreenPreview() {
-    SignedInScreen()
+    // Pass a dummy NavController for the preview
+    SignedInScreen(navController = rememberNavController())
 }
