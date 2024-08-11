@@ -1,4 +1,4 @@
-package com.example.loginappjetpack.components
+package com.example.loginappjetpack.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.loginappjetpack.R
+import com.example.loginappjetpack.components.buttons.SubButton
 
 @Composable
 fun ProductCard(
@@ -29,8 +29,9 @@ fun ProductCard(
 ) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
+            .height(146.dp)
+            .width(143.dp)
+            .padding(bottom = 8.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
@@ -41,7 +42,7 @@ fun ProductCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
         ) {
             Image(
                 painter = painterResource(id = imageRes),
@@ -49,36 +50,40 @@ fun ProductCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp)
+                    .height(65.dp)
             )
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(start = 7.dp)
             ) {
                 Text(
                     text = mainText,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
-                        fontSize = 20.sp
+                        fontSize = 16.sp,
+                        lineHeight = 15.sp
+
                     ),
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    //modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
                     text = subText,
                     style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = FontWeight.Normal,
                         color = Color.Gray,
-                        fontSize = 14.sp
+                        fontSize = 8.sp,
+                        lineHeight = 10.sp
                     )
                 )
             }
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 16.dp, bottom = 16.dp),
-                horizontalArrangement = Arrangement.End
+                    .fillMaxSize()
+                    .padding(end = 9.dp, bottom = 9.dp),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.Bottom
             ) {
                 SubButton(
                     text = buttonText,

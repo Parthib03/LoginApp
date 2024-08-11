@@ -72,5 +72,7 @@ dependencies {
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.com.android.volley.volley2)
     implementation(libs.coil.kt.coil.compose)
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
+    //implementation(libs.accompanist.webview)
     //implementation("androidx.compose.material:material-*:1.6.8")
 }

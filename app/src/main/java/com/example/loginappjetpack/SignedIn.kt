@@ -18,7 +18,8 @@ import com.android.volley.toolbox.Volley
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.loginappjetpack.components.MainButton
+import coil.compose.rememberAsyncImagePainter
+import com.example.loginappjetpack.components.buttons.MainButton
 
 @Composable
 fun SignedInScreen(navController: NavController, viewModel: SignedInViewModel = viewModel(factory = SignedInViewModelFactory(SignedInRepository(Volley.newRequestQueue(LocalContext.current))))) {
@@ -42,7 +43,7 @@ fun SignedInScreen(navController: NavController, viewModel: SignedInViewModel = 
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Image(
-                        painter = rememberImagePainter(apiData!!.data.logoImage),
+                        painter = rememberAsyncImagePainter(apiData!!.data.logoImage),
                         contentDescription = null,
                         modifier = Modifier.size(188.dp),
                         contentScale = ContentScale.Crop

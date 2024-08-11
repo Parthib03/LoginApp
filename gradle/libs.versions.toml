@@ -1,4 +1,5 @@
 [versions]
+accompanistWebview = "0.23.1"
 agp = "8.5.1"
 androidVolleyVersion = "1.2.1"
 androidxMaterialZ = "1.6.8"
@@ -17,6 +18,7 @@ navigationCompose = "2.7.7"
 runtimeLivedata = "1.6.8"
 
 [libraries]
+accompanist-webview = { module = "com.google.accompanist:accompanist-webview", version.ref = "accompanistWebview" }
 androidx-compose-material-material-z = { module = "androidx.compose.material:material-*", version.ref = "androidxMaterialZ" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

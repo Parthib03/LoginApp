@@ -19,8 +19,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.loginappjetpack.components.buttons.MainButton
 import com.example.loginappjetpack.utils.validateInputs
-import com.example.loginappjetpack.components.MainButton
 
 @Composable
 fun LoginScreen(navController: NavController) {
