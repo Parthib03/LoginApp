@@ -1,6 +1,6 @@
-# LoginApp
+# QuickFix
 
-LoginApp is an Android application developed using Android Studio. It provides a simple and secure user login functionality using Jetpack components. The app is currently under **heavy development**, so colors, designs, and functionalities are not fixed and are subject to change. New features and improvements are being added regularly.
+QuickFix is an Android application developed using Android Studio. It provides a simple and secure user login functionality using Jetpack components. It is a fictional B2C app to provide efficient services. The app is currently under **heavy development**, so colors, designs, and functionalities are not fixed and are subject to change. New features and improvements are being added regularly.
 
 ## Features
 
