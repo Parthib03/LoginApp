@@ -1,5 +1,6 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -55,7 +56,7 @@ fun Homescreen() {
                     .background(
                         brush = Brush.verticalGradient(
                             colors = listOf(
-                                Color(0xFF4B3BCF),
+                                Color(0xFF0E64D2),
                                 Color.White
                             ),
                         )
@@ -76,23 +77,22 @@ fun Homescreen() {
                             .fillMaxWidth()
                             .height(100.dp), // Specify the desired height here
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(100.dp)
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Column(
                             modifier = Modifier.height(100.dp), // Ensure the column also respects the height
-                            verticalArrangement = Arrangement.SpaceEvenly,
+                            verticalArrangement = Arrangement.spacedBy(5.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.bimpailogo),
+                                painter = painterResource(id = R.drawable.quickfix),
                                 contentDescription = "Logo",
-                                modifier = Modifier.size(53.dp)
+                                modifier = Modifier.width(80.dp).padding(top = 15.dp)
                             )
-                            Text(
-                                text = "BIMPAI",
-                                fontSize = 9.sp,
-                                color = Color.White,
-                                fontWeight = FontWeight.Medium
+                            Image(
+                                painter = painterResource(id = R.drawable.quickfixmono),
+                                contentDescription = "Logo",
+                                modifier = Modifier.width(80.dp)
                             )
                         }
                         //Spacer(modifier = Modifier.width(100.dp))
@@ -136,7 +136,7 @@ fun Homescreen() {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(1f),
-                                horizontalArrangement = Arrangement.spacedBy(9.dp)
+                                horizontalArrangement = Arrangement.End
                             ) {
                                 RadioButtonWithLabel(
                                     label = "English",
@@ -144,12 +144,14 @@ fun Homescreen() {
                                     isSelected = selectedOption == "English",
                                     onClick = { selectedOption = "English" }
                                 )
+                                Spacer(modifier = Modifier.width(3.dp))
                                 RadioButtonWithLabel(
                                     label = "Hindi",
                                     radiotxtsize = 10,
                                     isSelected = selectedOption == "Hindi",
                                     onClick = { selectedOption = "Hindi" }
                                 )
+                                Spacer(modifier = Modifier.width(3.dp))
                                 RadioButtonWithLabel(
                                     label = "Bengali",
                                     radiotxtsize = 10,
@@ -181,9 +183,9 @@ fun Homescreen() {
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 10.dp)
+                        .padding(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 186.dp)
                         .fillMaxSize()
-                        //.verticalScroll(rememberScrollState()),
+                    //.verticalScroll(rememberScrollState()),
                     //horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     // VIDEOCARD
@@ -234,7 +236,7 @@ fun Homescreen() {
 
                     // SEGMENTHEADING
                     //Spacer(modifier = Modifier.height(20.dp))
-                    SegmentHeader(leftText = "Trending Products and Services in BIMPAI", leftTextWidth = 200, lineHeight = 20)
+                    SegmentHeader(leftText = "Trending Products and Services in QUICK FIX", leftTextWidth = 200, lineHeight = 20)
 
                     //PRODUCTCARDS
                     //Spacer(modifier = Modifier.height(10.dp))
@@ -281,7 +283,7 @@ fun Homescreen() {
 
                     // SEGMENTHEADING
                     //Spacer(modifier = Modifier.height(20.dp))
-                    SegmentHeader(leftText = "Nearby BIMPAI profiles", leftTextWidth = 200, lineHeight = 20)
+                    SegmentHeader(leftText = "Nearby QUICK FIX profiles", leftTextWidth = 200, lineHeight = 20)
 
                     //Spacer(modifier = Modifier.height(10.dp))
                     Row(

@@ -17,8 +17,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            //MainApp()
-            SignupScreen()
+            MainApp()
+            //SignupScreen()
+            //SignupScreen2()
+            //MainScreen()
 
         }
     }
@@ -30,7 +32,7 @@ fun MainApp() {
     NavHost(navController = navController, startDestination = "login") {
         composable("login") { LoginScreen(navController) }
         composable("signedin") { SignedInScreen(navController) }
-        composable("home") { Homescreen() }
+        composable("home") { MainScreen() }
     }
 }
 

@@ -73,7 +73,7 @@ fun CompanyCardPreview() {
         height = 45,
         width = Modifier.width(247.dp),
         text1 = "Google",
-        imageResId = R.drawable.bimpailogo, // Ensure this drawable exists
+        imageResId = R.drawable.quickfix, // Ensure this drawable exists
         textColor = Color.Black
     )
 }

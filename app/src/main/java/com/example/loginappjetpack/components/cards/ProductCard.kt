@@ -87,7 +87,7 @@ fun ProductCard(
             ) {
                 SubButton(
                     text = buttonText,
-                    backgroundColor = Color(0xFF4b3bcf),
+                    backgroundColor = Color(0xFF0E64D2),
                     contentColor = Color.White,
                     onClick = onButtonClick
                 )

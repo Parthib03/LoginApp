@@ -49,7 +49,7 @@ fun SignedInScreen(navController: NavController, viewModel: SignedInViewModel = 
                         contentScale = ContentScale.Crop
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = apiData!!.data.title, color = Color.White)
+                    Text(text = apiData!!.data.title, color = Color.Black)
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(text = apiData!!.data.headline, color = Color.White)
                     Spacer(modifier = Modifier.height(32.dp))
@@ -62,7 +62,7 @@ fun SignedInScreen(navController: NavController, viewModel: SignedInViewModel = 
                 }
             }
             else -> {
-                Text(text = "Loading...", color = Color.White)
+                Text(text = "Loading (API LOADING) ...", color = Color.White)
             }
         }
     }

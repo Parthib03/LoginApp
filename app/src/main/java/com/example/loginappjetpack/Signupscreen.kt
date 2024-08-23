@@ -50,7 +50,7 @@ fun SignupScreen() {
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF4B3BCF),
+                        Color(0xFF0E64D2),
                         Color.White
                     ),
                 )
@@ -268,7 +268,7 @@ fun SignupScreen() {
 
             //BOX-2
             Box(modifier = Modifier
-                .padding(top = 0.dp, start = 24.dp, end = 24.dp, bottom = 0.dp)
+                .padding(top = 0.dp, start = 24.dp, end = 24.dp, bottom = 100.dp)
                 .fillMaxWidth()
                 .height(334.dp)
                 .clip(RoundedCornerShape(10.dp))
